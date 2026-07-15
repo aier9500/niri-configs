@@ -1,0 +1,27 @@
+// User overrides — kept separate so `dms setup binds` never clobbers them.
+binds {
+    Super+E hotkey-overlay-title="Files" { spawn "nautilus"; }
+    Super+B hotkey-overlay-title="Zen Browser" { spawn "flatpak" "run" "app.zen_browser.zen"; }
+    Super+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+
+    // Windows-style snip -> niri interactive screenshot UI (region/window/screen).
+    Alt+Shift+S hotkey-overlay-title="Screenshot region" { screenshot; }
+
+    // GNOME parity: Super+M = notifications (task mgr stays on Ctrl+Alt+Del).
+    Super+M hotkey-overlay-title="Notifications" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    // Classic close-window alongside DMS's Super+Q.
+    Alt+F4 hotkey-overlay-title="Close window" { close-window; }
+    Super+X hotkey-overlay-title="Close window" { close-window; }
+    // Power menu moved off Super+X.
+    Super+Shift+X hotkey-overlay-title="Power Menu" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+
+    // Super+A freed per request. Launcher now on tap-Super (F13) + overview on Super+Tab.
+    // NOTE: tap-Super needs keyd `leftmeta = overload(meta, f13)` applied — until then no key launches it.
+    // GNOME "tap Super = launcher". keyd overloads leftmeta -> tap emits F13; niri catches it here.
+    F13 hotkey-overlay-title="App Launcher (tap Super)" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    // Always-available launcher key (works without the keyd F13 setup).
+    Alt+Space hotkey-overlay-title="App Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+
+    // Switch keyboard layout / language (needs 2+ xkb layouts configured).
+    Super+Space hotkey-overlay-title="Switch language" { switch-layout "next"; }
+}
