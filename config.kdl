@@ -24,12 +24,13 @@ input {
     touchpad {
         tap
         natural-scroll
-        // dwt              // disable-while-typing — uncomment if palm rejection wanted
+        dwt              // disable-while-typing — uncomment if palm rejection wanted
         // accel-speed 0.2
     }
 
     mouse {
         // natural-scroll
+        accel-profile "flat"   // disable pointer acceleration (raw 1:1 movement)
     }
 
     // Hyprland-style: focus follows mouse hover anywhere + cursor warps to keyboard-focused window.
@@ -40,6 +41,18 @@ input {
 // ---- Autostart ----
 spawn-at-startup "dms" "run"                                         // DankMaterialShell
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"  // polkit prompts
+
+// ---- Blur ----
+// niri blur is GLOBAL — it blurs behind any translucent surface (windows + layer panels).
+// Not per-app scopable in 26.04. Only visible where a surface is actually translucent:
+//   - ghostty: set `background-opacity` < 1 (+ `background-blur`) in its config
+//   - Zen: translucent only via userChrome tweaks
+//   - overview: shows this same blur behind translucent windows
+blur {
+    on
+    passes 2
+    noise 0.02
+}
 
 // ---- Misc ----
 prefer-no-csd

@@ -1,12 +1,10 @@
 binds {
     // === System & Overview ===
-    Mod+D repeat=false { toggle-overview; }
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // === Application Launchers ===
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
-    // Launcher moved to Super+A in user-binds.kdl (+ tap-Super via F13). Space freed.
+    // Launcher moved to Super+A in user-binds.kdl. Space freed.
     /-Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
@@ -20,7 +18,7 @@ binds {
 
     // Super+X repurposed to close-window in user-binds.kdl; power menu moved to Super+Shift+X.
     /-Super+X hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-    Mod+Comma hotkey-overlay-title="Settings" {
+    Mod+I hotkey-overlay-title="Settings" {
         spawn "dms" "ipc" "call" "settings" "focusOrToggle";
     }
     Mod+Y hotkey-overlay-title="Browse Wallpapers" {
@@ -28,15 +26,19 @@ binds {
     }
     // Notifications on Super+M (user-binds.kdl) — Mod+N freed.
     /-Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
-    Mod+Shift+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
+    Mod+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
 
     // === Security ===
-    Mod+Alt+L hotkey-overlay-title="Lock Screen" {
+    Mod+L hotkey-overlay-title="Lock Screen" {
         spawn "dms" "ipc" "call" "lock" "lock";
     }
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" {
-        spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
+    // Logout (quit) moved to Alt+F4 in user-binds.kdl.
+    Ctrl+Alt+Delete hotkey-overlay-title="Power Menu" {
+        spawn "dms" "ipc" "call" "powermenu" "toggle";
+    }
+    // System monitor: Mission Center (flatpak) on Ctrl+Shift+Esc (Windows Task Mgr parity).
+    Ctrl+Shift+Escape hotkey-overlay-title="System Monitor" {
+        spawn "flatpak" "run" "io.missioncenter.MissionCenter";
     }
 
     // === Audio Controls ===
@@ -84,8 +86,8 @@ binds {
     /-Mod+Q repeat=false { close-window; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-    Mod+Shift+T { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+T { toggle-window-floating; }
+    Mod+Shift+T { switch-focus-between-floating-and-tiling; }
     Mod+W { toggle-column-tabbed-display; }
     Mod+Shift+W hotkey-overlay-title="Create window rule" { spawn "dms" "ipc" "call" "window-rules" "toggle"; }
 
@@ -96,18 +98,13 @@ binds {
     Mod+Right { focus-column-right; }
     // hjkl removed (colemak) — arrows only.
 
-    // === Move window to Monitor (Super+Shift+arrows) ===
-    // All four directions relocate the focused column to the neighbouring monitor.
-    Mod+Shift+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Right { move-column-to-monitor-right; }
-    Mod+Shift+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Down  { move-column-to-monitor-down; }
+    // === Move window to Monitor (Super+Bracket) ===
+    Mod+BracketLeft  { move-column-to-monitor-left; }
+    Mod+BracketRight { move-column-to-monitor-right; }
 
     // === Column Navigation ===
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
 
     // === Focus monitor (Super+Ctrl+Left/Right) ===
     // Move keyboard focus to the neighbouring monitor; window stays put.
@@ -121,9 +118,7 @@ binds {
     // Switch workspace: Ctrl+Super+Up/Down (requested).
     Mod+Ctrl+Down { focus-workspace-down; }
     Mod+Ctrl+Up   { focus-workspace-up; }
-    // Move column to workspace: Ctrl+Shift+Super+Up/Down.
-    Mod+Shift+Ctrl+Down { move-column-to-workspace-down; }
-    Mod+Shift+Ctrl+Up   { move-column-to-workspace-up; }
+    // Super+Shift+Ctrl family fully freed (move-col-to-workspace removed).
     // Also switch workspace with Super+PageUp/PageDown (kept per request).
     Mod+Page_Down { focus-workspace-down; }
     Mod+Page_Up   { focus-workspace-up; }
@@ -139,20 +134,14 @@ binds {
     // U/I removed (colemak).
 
     // === Mouse Wheel Navigation ===
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
 
-    Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+    Mod+WheelScrollRight { focus-column-right; }
+    Mod+WheelScrollLeft  { focus-column-left; }
 
-    Mod+Shift+WheelScrollDown      { focus-column-right; }
-    Mod+Shift+WheelScrollUp        { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+    Mod+Shift+WheelScrollDown { focus-column-right; }
+    Mod+Shift+WheelScrollUp   { focus-column-left; }
 
     // === Numbered Workspaces ===
     Mod+1 { focus-workspace 1; }
@@ -176,19 +165,21 @@ binds {
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
 
-    // === Column stack (Super+Alt+arrows) ===
-    // Up/Down: reorder the focused window within its column stack.
-    Mod+Alt+Up   { move-window-up; }
-    Mod+Alt+Down { move-window-down; }
-    // Left/Right: pull a window in from / push it out to the neighbouring column.
-    Mod+Alt+Left  { consume-or-expel-window-left; }
-    Mod+Alt+Right { consume-or-expel-window-right; }
-    // Eject focused window out of its column into its own.
-    Mod+Period { expel-window-from-column; }
+    // === Consume/expel + swap window (Super+Shift+arrows) ===
+    // Left/Right: consume/expel window to the neighbouring column.
+    Mod+Shift+Left  { consume-or-expel-window-left; }
+    Mod+Shift+Right { consume-or-expel-window-right; }
+    // Up/Down: swap the focused window up/down within its column.
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Down  { move-window-down; }
+
+    // === Move column (Super+Alt+Left/Right) ===
+    Mod+Alt+Left  { move-column-left; }
+    Mod+Alt+Right { move-column-right; }
+    // Super+Alt+Up/Down freed — swap-window moved to Super+Shift.
 
     // === Sizing & Layout ===
     Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+C { center-column; }
@@ -209,5 +200,6 @@ binds {
     Alt+Print { screenshot-window; }
     // === System Controls ===
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    Mod+Shift+P { power-off-monitors; }
+    // Power off monitors disabled (unused). Uncomment to restore.
+    /-Mod+Shift+P { power-off-monitors; }
 }
