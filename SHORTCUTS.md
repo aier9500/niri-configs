@@ -43,6 +43,7 @@ Source: **D** = `dms/binds.kdl` (DMS-generated) · **U** = `dms/user-binds.kdl` 
 | Key | Action | Src |
 |-----|--------|-----|
 | `Super+[ / Super+]` | Move window to monitor left/right | D |
+| `Super+Ctrl+Shift+↑/↓` | Move window to workspace up/down | D |
 | `Super+Shift+←/→` | Consume/expel window to neighbour column | D |
 | `Super+Shift+↑/↓` | Swap window up/down in column | D |
 | `Super+Alt+←/→` | Move column (reposition in strip) | D |

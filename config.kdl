@@ -5,7 +5,7 @@
 // ---- DMS includes (order: colors first so later layout can override) ----
 include "dms/colors.kdl"
 include "dms/layout.kdl"
-include "dms/binds.kdl"
+// dms/binds.kdl dropped — all binds consolidated into user-binds.kdl (DMS-safe).
 include "dms/user-binds.kdl"
 include "dms/alttab.kdl"
 include "dms/windowrules.kdl"
@@ -43,11 +43,6 @@ spawn-at-startup "dms" "run"                                         // DankMate
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"  // polkit prompts
 
 // ---- Blur ----
-// niri blur is GLOBAL — it blurs behind any translucent surface (windows + layer panels).
-// Not per-app scopable in 26.04. Only visible where a surface is actually translucent:
-//   - ghostty: set `background-opacity` < 1 (+ `background-blur`) in its config
-//   - Zen: translucent only via userChrome tweaks
-//   - overview: shows this same blur behind translucent windows
 blur {
     on
     passes 2
@@ -55,8 +50,8 @@ blur {
 }
 
 // ---- Misc ----
-prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+prefer-no-csd // disables client-side decors
+screenshot-path "~/Pictures/Screenshots/Screenshot From %Y-%m-%d %H-%M-%S.png"
 
 hotkey-overlay {
     skip-at-startup

@@ -101,6 +101,7 @@ binds {
     // === Move window to Monitor (Super+Bracket) ===
     Mod+BracketLeft  { move-column-to-monitor-left; }
     Mod+BracketRight { move-column-to-monitor-right; }
+    // Move-to-workspace up/down lives in user-binds.kdl.
 
     // === Column Navigation ===
     Mod+Home { focus-column-first; }
