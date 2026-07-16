@@ -1,7 +1,7 @@
 prefer-no-csd // disables client-side decors
 
 layout {
-    gaps 4
+    gaps 8
     background-color "transparent"
 
     border {
@@ -18,6 +18,18 @@ window-rule {
     clip-to-geometry true
     tiled-state true
     draw-border-with-background false
+
+    background-effect {
+        blur true // blur for transparent windows
+        xray true // true -> static blur, more efficient
+    }
+}
+
+blur {
+    passes 3
+    offset 4 // blur radius
+    noise 0.04
+    saturation 1.2
 }
 
 recent-windows {
