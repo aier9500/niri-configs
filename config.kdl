@@ -34,7 +34,6 @@ input {
 }
 
 // === Autostart ===
-spawn-at-startup "dms" "run"                                         // DankMaterialShell
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"  // polkit prompts
 
 // === Misc ===
