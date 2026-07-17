@@ -11,36 +11,25 @@ binds {
     // ==============================================
     // ==============================================
 
-    Mod+E hotkey-overlay-title="Files" { spawn "nautilus"; }
-    Mod+B hotkey-overlay-title="Zen Browser" { spawn "flatpak" "run" "app.zen_browser.zen"; }
-    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
-    Mod+V hotkey-overlay-title="Clipboard Manager" {
-        spawn "dms" "ipc" "call" "clipboard" "toggle";
-    }
-    Mod+I hotkey-overlay-title="Settings" {
-        spawn "dms" "ipc" "call" "settings" "focusOrToggle";
-    }
-    Mod+Y hotkey-overlay-title="Browse Wallpapers" {
-        spawn "dms" "ipc" "call" "dankdash" "wallpaper";
-    }
-    Mod+S hotkey-overlay-title="Quick Settings" {
-        spawn "dms" "ipc" "call" "control-center" "toggle";
-    }
-    Mod+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
-    Ctrl+Shift+Escape hotkey-overlay-title="System Monitor" {
-        spawn "flatpak" "run" "io.missioncenter.MissionCenter";
-    }
-    Mod+M hotkey-overlay-title="Notifications" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
-    Mod+A hotkey-overlay-title="App Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    // === Apps ===
+    Mod+Return          { spawn "ghostty"; }
+    Ctrl+Shift+Escape   { spawn "flatpak" "run" "io.missioncenter.MissionCenter"; }
+    Mod+E { spawn "nautilus"; }
+    Mod+B { spawn "flatpak" "run" "app.zen_browser.zen"; }
+    Mod+V { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+I { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
+
+    // === Components ===
+    Mod+Y { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
+    Mod+S { spawn "dms" "ipc" "call" "control-center" "toggle"; }
+    Mod+N { spawn "dms" "ipc" "call" "notepad" "toggle"; }
+    Mod+M { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Mod+A { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
 
     // === Session ===
-    Mod+L hotkey-overlay-title="Lock Screen" {
-        spawn "dms" "ipc" "call" "lock" "lock";
-    }
-    Ctrl+Alt+Delete hotkey-overlay-title="Power Menu" {
-        spawn "dms" "ipc" "call" "powermenu" "toggle";
-    }
-    Mod+Space hotkey-overlay-title="Switch language" { switch-layout "next"; }
+    Ctrl+Alt+Delete { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+    Mod+L { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Mod+Space { switch-layout "next"; }
 
 
     // =======================================
@@ -56,8 +45,8 @@ binds {
     // === Basics ===
     Mod+Tab repeat=false { toggle-overview; }
 
-    Mod+Q hotkey-overlay-title="Close window" { close-window; }
-    Alt+F4 hotkey-overlay-title="Close window" { close-window; }
+    Mod+Q { close-window; }
+    Alt+F4 { close-window; }
 
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
