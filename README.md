@@ -1,7 +1,7 @@
 # niri + DMS dotfiles
 
 Config for the niri window manager plus DankMaterialShell (DMS) presets.
-niri config is symlinked; DMS presets you set by hand in its settings app.
+niri config is symlinked; DMS presets you set by hand in its settings app. Optional voice typing via `voxtype` setup before OpenWhispr implements Wayland compositor support.
 
 ## Install
 
@@ -65,31 +65,25 @@ Keyboard shortcuts live in `niri/user/binds.kdl`.
   `on_transcription` all `false` under `[output.notification]`) — redundant
   once the DMS Activity Overlay widget below is on.
 - AI cleanup (fixes grammar, converts to British spelling, removes "um"s):
-  runs the transcript through a local LLM. Two files in `voxtype/` set it up —
-  a custom Ollama model that holds the cleanup rules, and a small script that
-  pipes text through it.
+  runs the transcript through a local LLM. One script does it —
+  `voxtype/cleanup.sh` — with the cleanup rules baked into its prompt, so
+  there's no custom model to build.
   - **Ollama** must be version **0.20 or newer** (the `gemma4` model needs it).
     Fedora's own package is too old — install with
-    `curl -fsSL https://ollama.com/install.sh | sh` instead.
-  - **Build the cleanup model** (once per machine):
+    `curl -fsSL https://ollama.com/install.sh | sh` instead. Then pull the
+    model: `ollama pull gemma4:e4b`.
+  - **Symlink the script and point the config at it** (like the niri config,
+    so editing the repo copy applies live after a daemon restart):
     ```bash
-    ollama pull gemma4:e4b                                          # base model
-    ollama create voxtype-cleanup -f voxtype/voxtype-cleanup.Modelfile
-    ```
-    All the cleanup instructions live in the model's `SYSTEM` prompt (see
-    `voxtype/voxtype-cleanup.Modelfile`), so the script stays plain plumbing.
-  - **Install the script and point the config at it:**
-    ```bash
-    cp voxtype/cleanup.sh ~/.config/voxtype/cleanup.sh
-    chmod +x ~/.config/voxtype/cleanup.sh
+    ln -sfn ~/Projects/niri-dms/voxtype/cleanup.sh ~/.config/voxtype/cleanup.sh
     ```
     ```toml
     [output.post_process]
     command = "sh -c 'exec \"$HOME/.config/voxtype/cleanup.sh\"'"
     ```
   - Two things this design gets right:
-    1. **Injection-safe.** Your dictation is sent as a chat *user* message,
-       separate from the model's *system* rules — so if you dictate
+    1. **Injection-safe.** Your dictation is sent as a chat _user_ message,
+       separate from the model's _system_ rules — so if you dictate
        "ignore your instructions", the model cleans that up as text instead
        of obeying it.
     2. **Clean output.** The script calls Ollama's HTTP API (`curl` + `jq`),
@@ -99,7 +93,8 @@ Keyboard shortcuts live in `niri/user/binds.kdl`.
        The API returns plain JSON, so that whole problem is gone.
   - If the DMS Activity Overlay plugin is installed, the script also feeds the
     cleaned text to its on-screen transcript bubble; if it isn't, the script
-    just passes the text through.
+    just passes the text through. Swap models via the `MODEL=` line in the
+    script.
 - Keep it running: run `voxtype setup systemd` so it starts automatically
   on login. After changing the config, reload it with
   `systemctl --user restart voxtype`.
