@@ -14,6 +14,8 @@ binds {
     // === Apps ===
     Mod+Return          { spawn "ghostty"; }
     Ctrl+Shift+Escape   { spawn "flatpak" "run" "io.missioncenter.MissionCenter"; }
+    F8       { spawn "voxtype" "record" "toggle"; }
+    Shift+F8 { spawn "voxtype" "record" "cancel"; }
     Mod+E { spawn "nautilus"; }
     Mod+B { spawn "flatpak" "run" "app.zen_browser.zen"; }
     Mod+V { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
