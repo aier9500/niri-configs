@@ -1,4 +1,4 @@
-> [!warning] THE COMMANDS IN THIS README IS DESIGNED FOR THE REPO TO BE CLONE TO `~/Projects` with its original name `niri-dms`!!!
+> [!WARNING] THE COMMANDS IN THIS README IS DESIGNED FOR THE REPO TO BE CLONE TO `~/Projects` with its original name `niri-dms`!!!
 
 ```bash
 mkdir -p ~/Projects
@@ -53,7 +53,7 @@ Keyboard shortcuts live in `niri/user/binds.kdl`.
 
 Press hotkey, talk, and the text pastes at your cursor. An optional local-LLM tidies the grammar and spelling. Set it up in these blocks.
 
-> [!tip] This is the solution I would suggest before OpenWhispr (much simpler setup) implements better Wayland compositor support.
+> [!TIP] This is the solution I would suggest before OpenWhispr (much simpler setup) implements better Wayland compositor support.
 
 ### Install `voxtype`
 
