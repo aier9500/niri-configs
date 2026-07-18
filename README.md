@@ -52,6 +52,10 @@ Some settings worth changing in the DMS settings after fresh install. Sorted by 
 
 Press hotkey, talk, and the text pastes at your cursor. An optional local-LLM tidies the grammar and spelling. Set it up in these blocks.
 
+`voxtype`'s config file lives in `~/.config/voxtype.config.toml`.
+
+You can edit via the TUI using `voxtype configure`.
+
 > [!TIP]
 > This is the solution I would suggest before OpenWhispr (which has a much simpler setup) implements better Wayland compositor support.
 >
@@ -74,7 +78,7 @@ In Niri, it is bound via `niri/user/binds.kdl`:
 - `Alt+Space` -> start / stop recording
 - `Alt+Shift+Space` -> cancel, discards without pasting
 
-In the `voxtype` config (`~/.config/voxtype.config.toml`), set `[hotkey] enabled = false` so Niri owns the key. (Set it `true` only on a desktop like GNOME, where Voxtype must listen for the key.)
+In the `voxtype` config, set `[hotkey] enabled = false` so Niri owns the key. (Set it `true` only on a desktop like GNOME, where Voxtype must listen for the key.)
 
 ### Paste + sound
 
@@ -84,6 +88,18 @@ In the `voxtype` config (`~/.config/voxtype.config.toml`), set `[hotkey] enabled
 ### Teach it your words
 
 Add proper nouns and jargon to `[whisper] initial_prompt`, comma-separated.
+
+Example:
+
+```toml
+# ...
+
+[whisper]
+model = "base.en"
+initial_prompt = "Vocabulary: OpenWhispr, Qwen, LLM, local LLM, local chat, self-hosting, Iker, Erik, Katie, ProArt, ProArt P16, Zenbook, Zenbook S16, ThinkPad, Logi Bolt, Delux M800, NuPhy Air 75, IBM Plex, Fedora, Arch, Ubuntu, Debian, Gnome, KDE Plasma, Hyprland, NixOS, X11, Wayland, systemd, Bash, Zsh, Vim, Neovim, Docker, GitHub, GitLab, VS Code, JetBrains, Rust, Cargo, npm, pnpm, WireGuard, Tailscale, Btrfs, ZFS, Postgres, Redis, Flatpak, BU Questrom, NYU Stern, UofT, sonion, brainrot, low-key, high-key, Tuxie's, Tuxie's Wiki, arepa, empanada, Niri, Voxtype, PaperWM, compositor, Wayland compositor"
+
+# ... code omitted
+```
 
 ### AI cleanup (optional)
 
