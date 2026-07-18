@@ -42,6 +42,15 @@ Everything below is the same table sorted by that logic.
 | Lock Screen              | Mod+L      |
 | Switch language          | Mod+Space  |
 
+### Dictation (voxtype)
+
+Alt-based, independent of the Mod layers.
+
+| Action             | Bind            |
+| ------------------ | --------------- |
+| Toggle dictation   | Alt+Space       |
+| Cancel dictation   | Alt+Shift+Space |
+
 ### Window basics
 
 | Action                     | Bind    | Alt bind |
