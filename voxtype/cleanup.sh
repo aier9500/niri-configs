@@ -34,7 +34,7 @@ capture="$HOME/.config/DankMaterialShell/plugins/voxtypeActivityOverlay/scripts/
 
 clean() {
 	jq -Rs --arg model "$MODEL" --arg sys "$SYSTEM" \
-		'{model:$model, stream:false, messages:[{role:"system",content:$sys},{role:"user",content:.}]}' \
+		'{model:$model, stream:false, think:false, messages:[{role:"system",content:$sys},{role:"user",content:.}]}' \
 	| curl -s http://localhost:11434/api/chat -d @- \
 	| jq -r '.message.content' \
 	| tr '\n' ' '
