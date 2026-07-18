@@ -71,8 +71,8 @@ voxtype setup check       # report anything still missing
 
 In Niri, it is bound via `niri/user/binds.kdl`:
 
-- `F8` -> start / stop recording
-- `Shift+F8` -> cancel, discards without pasting
+- `Alt+Space` -> start / stop recording
+- `Alt+Shift+Space` -> cancel, discards without pasting
 
 In the `voxtype` config (`~/.config/voxtype.config.toml`), set `[hotkey] enabled = false` so Niri owns the key. (Set it `true` only on a desktop like GNOME, where Voxtype must listen for the key.)
 
