@@ -31,7 +31,6 @@ binds {
     // === Session ===
     Ctrl+Alt+Delete { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
     Mod+L { spawn "dms" "ipc" "call" "lock" "lock"; }
-    Mod+Space { switch-layout "next"; }
 
 
     // =======================================

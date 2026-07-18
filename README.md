@@ -22,6 +22,16 @@ ln -sfn ~/Projects/niri-dms/niri ~/.config/niri
 systemctl --user add-wants niri.service dms
 ```
 
+## fcitx5 + Rime Setup (Keyboard Layout Management, Chinese)
+
+Optional — skip if you don't use multiple keyboard layouts. Niri autostarts fcitx5 and sets `XMODIFIERS` X11 compatibility already (see `niri/user/autostart.kdl` / `misc.kdl`); everything else lives in fcitx5 itself.
+
+```bash
+sudo dnf install fcitx5 fcitx5-rime fcitx5-configtool
+```
+
+Input methods, keyboard layouts, and the layout switch bind are all managed in the fcitx5 settings app (`fcitx5-configtool`).
+
 ## DMS suggested presets
 
 Some settings worth changing in the DMS settings after fresh install. Sorted by section.

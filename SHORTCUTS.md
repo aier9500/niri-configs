@@ -40,7 +40,6 @@ Everything below is the same table sorted by that logic.
 | Quick Settings           | Mod+S      |
 | Browse Wallpapers        | Mod+Y      |
 | Lock Screen              | Mod+L      |
-| Switch language          | Mod+Space  |
 
 ### Dictation (voxtype)
 
