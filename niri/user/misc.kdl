@@ -4,6 +4,16 @@ hotkey-overlay {
     skip-at-startup
 }
 
+debug {
+    // Render compositor on iGPU (renderD128) in multi-GPU setups. 
+    // Use: 
+    // ls -l /dev/dri/by-path/pci-*-render
+    //
+    // to see which available devices. Use cardwire to disable dGPU and run to
+    // find iGPU
+    render-drm-device "/dev/dri/renderD128"
+}
+
 environment {
     // Session runs on AMD iGPU (cardwire integrated). NVIDIA-offload apps set PRIME vars themselves.
     ELECTRON_OZONE_PLATFORM_HINT "auto"
