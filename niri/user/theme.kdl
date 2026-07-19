@@ -37,7 +37,7 @@ blur {
     passes 3          // 3, higher = less artifacts at cost of GPU = hazier
     offset 8          // 2 = subtle, 4 = medium, 8 = dreamy; higher needs more passes
     noise 0.04        // 0 = smooth, 0.2 gritty
-    saturation 1.2    // 1 = true colours, 1.2 slightly punchy, 1.6 vibrant
+    saturation 1.0    // 1 = true colours, 1.2 slightly punchy, 1.6 vibrant
 }
 
 animations {
