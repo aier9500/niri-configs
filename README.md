@@ -172,10 +172,15 @@ command = "sh -c 'exec \"$HOME/.config/voxtype/cleanup.sh\"'"
 
 Swap models by editing its `MODEL=` line. Default uses Gemma 4 E4B
 
-### DMS extras
+### `gaze` (facial recognition) integration with DMS Lock
 
-- **Status icon** -> `voxtype setup dms --install`, then enable the **Voxtype**
-  plugin in DMS Settings -> Plugins and add it to the bar. Needs a Nerd Font
-  (`sudo dnf install jetbrains-mono-nerd-fonts`).
-- **Activity Overlay** -> if that plugin is installed, `cleanup.sh` feeds it the
-  live transcript bubble automatically. Nothing to configure.
+`gaze` has yet to add official support for DMS Lock, but all you have to do to get it working is add the following two lines to `/etc/pam.d/dankshell`:
+
+```conf
+auth    sufficient    pam_gaze.so
+auth    substack      sysctem-auth
+```
+
+First line lets `gaze` unlock DMS Lock, and second line allows for password fallback.
+
+Press enter in the DMS Lock to trigger `gaze`.
