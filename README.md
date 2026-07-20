@@ -118,22 +118,22 @@ enabled = false
 
 ### Autostart
 
-Instead of `voxtype setup systemd` which uses the stock daemon, use the repo's unit + launcher so the vocabulary comes from `~/.config/voxtype/vocabulary.txt`. More on vocabulary in the section below.
+Instead of `voxtype setup systemd` which uses the stock daemon, use the repo's unit + launcher so the dictionary comes from `~/.config/voxtype/dictionary.txt`. More on the dictionary in the section below.
 
 The following code
 
-- Creates a private copy of the example vocabulary list.
+- Creates a private copy of the example dictionary list.
 - Links the following to `~/.config/voxtype/`:
-  - `voxtype/vocabulary.txt` — portable vocab list.
-  - `voxtype/voxtype-with-vocab-list` — script that pipes vocab list into whispr.
+  - `voxtype/dictionary.txt` — portable dictionary list.
+  - `voxtype/voxtype-with-dictionary.sh` — script that pipes dictionary list into whispr.
   - `voxtype/voxtype.service` — `systemd` service that tells `voxtype` to always use the script above.
 - Reloads and starts custom `voxtype`.
 
 ```bash
 repo=~/Projects/niri-dms/voxtype
-cp -n "$repo/vocabulary.txt.example" "$repo/vocabulary.txt"
-ln -sfn "$repo/vocabulary.txt" ~/.config/voxtype/vocabulary.txt
-ln -sfn "$repo/voxtype-with-vocab-list" ~/.config/voxtype/voxtype-with-vocab-list
+cp -n "$repo/dictionary.txt.example" "$repo/dictionary.txt"
+ln -sfn "$repo/dictionary.txt" ~/.config/voxtype/dictionary.txt
+ln -sfn "$repo/voxtype-with-dictionary.sh" ~/.config/voxtype/voxtype-with-dictionary.sh
 ln -sfn "$repo/voxtype.service" ~/.config/systemd/user/voxtype.service
 systemctl --user daemon-reload
 systemctl --user enable --now voxtype    # autostart on login + start now
@@ -165,12 +165,12 @@ enabled = true
 volume = 0.2
 ```
 
-#### Personal vocabulary
+#### Personal dictionary
 
-Proper nouns and jargon that Whisper would otherwise mistranscribe live in `voxtype/vocabulary.txt` — one term per line, `#` comments and blank lines ignored:
+Proper nouns and jargon that Whisper would otherwise mistranscribe live in `voxtype/dictionary.txt` — one term per line, `#` comments and blank lines ignored:
 
 ```
-# voxtype/vocabulary.txt
+# voxtype/dictionary.txt
 # --- AI / LLM ---
 OpenWhispr
 Claude
@@ -181,9 +181,9 @@ Bob
 # ... etc
 ```
 
-The repo ships an template vocabulary list `voxtype/vocabulary.txt.example`; the [Autostart](#autostart) step above created a local copy to `voxtype/vocabulary.txt`.
+The repo ships an template dictionary list `voxtype/dictionary.txt.example`; the [Autostart](#autostart) step above created a local copy to `voxtype/dictionary.txt`.
 
-Voxtype can't read a word list from a file on its own — it only accepts an `initial_prompt` string in `config.toml`. To avoid cluttering the config file, we use `voxtype/voxtype-with-vocab-list` to process and inject `vocabulary.txt` to run `voxtype --initial-prompt "…" daemon`.
+Voxtype can't read a word list from a file on its own — it only accepts an `initial_prompt` string in `config.toml`. To avoid cluttering the config file, we use `voxtype/voxtype-with-dictionary.sh` to process and inject `dictionary.txt` to run `voxtype --initial-prompt "…" daemon`.
 
 ### AI cleanup (optional)
 

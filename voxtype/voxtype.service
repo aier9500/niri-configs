@@ -1,5 +1,5 @@
-# Launches the wrapper voxtype-with-vocab-list so the Whisper vocabulary comes
-# from ~/.config/voxtype/vocabulary.txt. 
+# Launches the wrapper voxtype-with-dictionary.sh so the Whisper dictionary comes
+# from ~/.config/voxtype/dictionary.txt.
 
 [Unit]
 Description=Voxtype voice-to-text daemon
@@ -9,7 +9,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=%h/.config/voxtype/voxtype-with-vocab-list
+ExecStart=%h/.config/voxtype/voxtype-with-dictionary.sh
 Restart=on-failure
 RestartSec=5
 
