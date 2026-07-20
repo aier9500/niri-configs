@@ -165,6 +165,22 @@ enabled = true
 volume = 0.2
 ```
 
+#### Output mode
+
+Set the output mode to `clipboard` so the transcript is copied to your clipboard and you paste it yourself with `Ctrl+V` or `Ctrl+Shift+V`. Requires `wl-copy` (Wayland).
+
+The four modes:
+
+- `type` — simulate keystrokes char-by-char at the cursor.
+- `clipboard` — copy to clipboard, paste manually.
+- `paste` — copy to clipboard, then fires `Ctrl+V`, might not work in the terminal.
+- `file` — write the transcript to a file (`file_path` needs to be defined).
+
+```toml
+[output]
+mode = "clipboard"
+```
+
 #### Personal dictionary
 
 Proper nouns and jargon that Whisper would otherwise mistranscribe live in `voxtype/dictionary.txt` — one term per line, `#` comments and blank lines ignored:
