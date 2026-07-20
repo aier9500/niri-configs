@@ -69,27 +69,12 @@ Press hotkey, talk, and the text pastes at your cursor. An optional local-LLM ti
 
 ### Install `voxtype`
 
-Get the rpm from [voxtype.io/download](https://voxtype.io/download) (or `dnf install voxtype`, which may be older). Then:
+Install the package using instructions from [https://voxtype.io/download](https://voxtype.io/download). Then:
 
 ```bash
 voxtype setup             # create the config
 voxtype setup --download  # download the speech model
 voxtype setup check       # report anything still missing
-```
-
-### Configuring `voxtype`
-
-`voxtype`'s config file lives in `~/.config/voxtype/config.toml`.
-
-```bash
-cd ~/.config/voxtype
-$EDITOR config.toml
-```
-
-You can edit via the TUI using:
-
-```bash
-voxtype configure
 ```
 
 ### `voxtype` Binding
@@ -121,11 +106,26 @@ After any config or vocabulary change:
 systemctl --user restart voxtype
 ```
 
-### Sound feedback
+### Configuring `voxtype`
+
+`voxtype`'s config file lives in `~/.config/voxtype/config.toml`. Edit using:
+
+```bash
+cd ~/.config/voxtype
+$EDITOR config.toml
+```
+
+You can edit via the TUI using:
+
+```bash
+voxtype configure
+```
+
+#### Sound feedback
 
 - `[audio.feedback] enabled = true`, `volume = 0.2` -> soft beep on record upon start and stop.
 
-### Teach it your words
+#### Teach it your words
 
 Proper nouns and jargon that Whisper would otherwise mistranscribe live in `voxtype/vocabulary.txt` — one term per line, `#` comments and blank lines ignored:
 
