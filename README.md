@@ -1,5 +1,5 @@
 > [!WARNING]
-> THE COMMANDS IN THIS README IS DESIGNED FOR THE REPO TO BE CLONED TO `~/Projects` with its original name `niri-dms`!!!
+> THE COMMANDS IN THIS README IS DESIGNED FOR THE REPO TO BE CLONED TO `~/Projects` WITH ITS ORIGINAL NAME `niri-dms`!!!
 
 > [!TIP]
 > This repo uses symlinks to respective folders in `~/.config`. You can edit their configs within this repo folder.
@@ -18,11 +18,24 @@ Niri configs is symlinked; DMS settings set by hand in its settings app. Optiona
 
 ## Install Niri & DMS
 
+Installing packages on Fedora:
+
 > Needs the Terra or Copr repo for DMS
 
-```bash
-ln -sin ~/Projects/niri-dms/niri ~/.config/niri
+```
+sudo dnf install niri dms
 systemctl --user add-wants niri.service dms
+dms setup
+```
+
+Backing up existing config and use repo config.
+
+```bash
+echo "This will back up your current Niri configs"
+cp -rn ~/.config/niri ~/.config/niri.bak
+echo "This will copy back your dms configs"
+cp -rn ~/.config/niri.bak/dms ~/.config/niri/dms
+ln -sin ~/Projects/niri-dms/niri ~/.config
 ```
 
 ## Nvidia High VRAM Fix
