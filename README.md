@@ -7,7 +7,7 @@
 ```bash
 mkdir -p ~/Projects
 cd ~/Projects
-git clone https://github.com/aier9500/niri-dms
+git clone https://github.com/Theory-Y/niri-dms
 ```
 
 # Niri + DMS dotfiles
