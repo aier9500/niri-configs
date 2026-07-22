@@ -78,14 +78,21 @@ Some settings worth changing in the DMS settings after fresh install. Sorted by 
 ### Personalisation
 
 - Wallpaper -> Duplicate with Blur -> true (blurry overview)
-- Theme & Colors
-  - Theme color -> Auto
-  - Cursor theme
+- Theme & Colours
+  - Theme Colours -> Auto
+  - Automatic Colour Mode
+    - Automatic Control & Share Gamma Control Settings
 
 ### Dank Bar
 
 - Positions
 - Widgets
+
+### Displays
+
+- Gamma Control
+  - Night 3000k-4000k (suggested ambient lighting 2700k-3000k)
+  - Day 6500k (suggested ambient lighting 4000k-5000k)
 
 ### Power & Security -> Power & Sleep -> Idle Settings
 
